@@ -1,0 +1,49 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Доступные функции{% endblock %}
+
+{% block content %}
+<div class="container mt-0 pt-3">
+     <h1 class="text-center mb-4" style="font-weight: 600;
+    color: #66CDAA;">Доступные функции системы</h1>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {% for feature in features %}
+        <div class="col">
+            <div class="card feature-card h-100 {% if not feature.is_active %}card-inactive{% endif %}">
+                <div class="card-header" style="background-color: #008080;">
+                    <h5 class="card-title mb-0">{{ feature.name }}</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ feature.description }}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="badge rounded-pill {% if feature.is_active %}bg-success{% else %}bg-secondary{% endif %}">
+                            {% if feature.is_active %}Активна{% else %}Отключена{% endif %}
+                        </span>
+                        <small class="text-muted">{{ feature.created_at|date:"d M Y" }}</small>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent">
+                    <a href="{% url 'about' %}" class="btn btn-outline-primary btn-sm">Попробовать</a>
+                    <button class="btn btn-outline-success btn-sm float-end">
+                        <i class="bi bi-star-fill"></i> Избранное
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info text-center">
+                <i class="bi bi-info-circle-fill"></i> Функции еще не добавлены
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{% url 'create_feature' %}" class="btn btn-primary btn-lg" style="background-color: #008080; border-color: #008080;">
+            <i class="bi bi-plus-circle"></i> Добавить новую функцию
+        </a>
+    </div>
+</div>
+{% endblock %}

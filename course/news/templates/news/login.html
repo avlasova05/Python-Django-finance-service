@@ -1,0 +1,33 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Авторизация{% endblock %}
+
+{% block content %}
+    <div class="features mt-3" >
+        <h1 style="margin-bottom: 30px;">Авторизация</h1>
+
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                Неправильное имя пользователя или пароль. Попробуйте снова.
+            </div>
+        {% endif %}
+
+        <form method="post" action="{% url 'login' %}" style="max-width: 400px; margin: 0 auto;">
+            {% csrf_token %}
+
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label for="id_username">Имя пользователя:</label>
+                <input type="text" name="username" class="form-control" id="id_username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="id_password">Пароль:</label>
+                <input type="password" name="password" class="form-control" id="id_password" required>
+            </div>
+            <div class="form-group" style="margin-top: 30px;  text-align: right;">
+                <button class="btn btn-success" style="background-color: #008080; border-color: #008080;" type="submit">Войти</button>
+                <a href="{% url 'register' %}" class="btn " style="border-color: #008080; color: #fff">Регистрация</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

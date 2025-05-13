@@ -1,0 +1,123 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Личные финансы - {{ user.username }}{% endblock %}
+
+{% block content %}
+<div class="container mt-0">
+    <h1 style="color: #66CDAA;" class="ms-4 mb-4">Финансовая аналитика для {{ user.username }}</h1>
+
+    <!-- Ссылки для добавления транзакций -->
+    <div class="mb-4">
+        <h2 style="color: #008080; font-weight: 400;">Добавить транзакцию</h2>
+        <a href="{% url 'add_income' %}" class="btn" style="background-color: #5F9EA0; border-color: #5F9EA0; color: white;">Добавить доход</a>
+        <a href="{% url 'add_expense' %}" class="btn" style="background-color: #20B2AA; border-color: #20B2AA; color: white;">Добавить расход</a>
+    </div>
+
+    <div class="row">
+        <!-- График распределения расходов -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header" style="background-color: #008080; border-color: #008080;font-weight: 700;">
+                    Распределение расходов по категориям
+                </div>
+                <div class="card-body text-center">
+                    {% if pie_chart %}
+                        <img src="data:image/png;base64,{{ pie_chart }}"
+                             alt="Расходы по категориям"
+                             class="img-fluid">
+                    {% else %}
+                        <p>Нет данных о расходах</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Динамика по месяцам -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header" style="background-color: #008080; font-weight: 700;">
+                    Динамика доходов и расходов ({{ current_year }})
+                </div>
+                <div class="card-body">
+                    <canvas id="monthlyChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Статистика и цели -->
+    <div class="row mt-4">
+        <!-- Общая статистика -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header" style="background-color: #008080; font-weight: 700;">
+                    Общая статистика
+                </div>
+                <div class="card-body">
+                    <p>Всего доходов: {{ total_income }} руб.</p>
+                    <p>Всего расходов: {{ total_expenses }} руб.</p>
+                    <p>Баланс: {{ balance }} руб.</p>
+                </div>
+            </div>
+        </div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('monthlyChart');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: {{ months_data.labels|safe }},
+            datasets: [
+                {
+                    label: 'Доходы',
+                    data: {{ months_data.income|safe }},
+                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Расходы',
+                    data: {{ months_data.expenses|safe }},
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+<style>
+    /* Стили для формы добавления суммы */
+    .input-group {
+        display: flex;
+    }
+    .input-group input {
+        flex: 1;
+        margin-right: 10px;
+    }
+    /* Стили для форм */
+    input[type="text"],
+    input[type="number"],
+    input[type="month"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+</style>
+{% endblock %}
+    </div>
+</div>

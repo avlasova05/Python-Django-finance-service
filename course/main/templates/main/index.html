@@ -1,0 +1,101 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+<div class="container mt-0">
+    <h1 class="text-center mt-0" style="color: #008080; font-weight: 600;">Добро пожаловать в FinFlow</h1>
+
+
+    <div class="service-description mb-5">
+        <p class="text-center" style="color: #fff; font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px;">
+            FinFlow - это удобный инструмент для управления личными финансами,
+            который поможет вам отслеживать доходы и расходы, анализировать свои 
+            финансовые привычки и достигать поставленных целей.
+        </p>
+        
+        <div class="row">
+            <div class="col-md-4 feature-card">
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-wallet feature-icon mb-3"></i>
+                        <h5 class="card-title">Учет операций</h5>
+                        <p class="card-text">Легко добавляйте и категоризируйте свои финансовые операции.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 feature-card">
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-chart-pie feature-icon mb-3"></i>
+                        <h5 class="card-title">Наглядная аналитика</h5>
+                        <p class="card-text">Визуализация ваших финансов в виде диаграмм и графиков.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 feature-card">
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-bell feature-icon mb-3"></i>
+                        <h5 class="card-title">Уведомления</h5>
+                        <p class="card-text">Напоминания о важных платежах и лимитах расходов.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Кнопка перехода -->
+    <div class="text-center mt-5 mb-5">
+        <a href="{% url 'features' %}" class="btn btn-primary btn-lg">
+            Перейти к возможностям сервиса
+        </a>
+    </div>
+</div>
+
+<style>
+    /* Общие стили */
+    .service-description {
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        padding: 30px;
+        margin-top: 30px;
+    }
+    
+    /* Стили для карточек возможностей */
+    .feature-card {
+        margin-bottom: 20px;
+    }
+    
+    .feature-card .card {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: none;
+        border-radius: 10px;
+        height: 100%;
+        transition: transform 0.3s;
+        color: #fff;
+    }
+    
+    .feature-card .card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .feature-icon {
+        font-size: 2rem;
+        color: cyan;
+    }
+    
+    /* Адаптивные стили */
+    @media (max-width: 768px) {
+        .feature-card {
+            margin-bottom: 15px;
+        }
+        
+        .service-description {
+            padding: 20px;
+        }
+    }
+</style>
+{% endblock %}

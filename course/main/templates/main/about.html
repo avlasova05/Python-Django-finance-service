@@ -1,0 +1,80 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Инфо о пользователях{% endblock %}
+
+{% block content %}
+<div class="container mt-0">
+    <h1 class="text-center mt-0" style="color: #66CDAA;; font-weight: 600;">Статистика данных пользователя</h1>
+
+    <!-- Блок с фичами -->
+    <div class="features-list mb-5">
+        <div class="feature-item">
+            <i class="fas fa-chart-line feature-icon"></i>
+            <span>Общая статистика </span>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-calendar-alt feature-icon"></i>
+            <span>Динамика изменений по месяцам</span>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-balance-scale feature-icon"></i>
+            <span>Сравнение категорий</span>
+        </div>
+    </div>
+
+
+    <div class="text-center mt-5 mb-5">
+        {% if user.is_authenticated %}
+            <a href="{% url 'personal_finance' %}" class="btn btn-primary btn-lg " style="background-color: #008080; border-color: #008080;">
+                Просмотреть личную информацию
+            </a>
+        {% else %}
+            <a href="{% url 'login' %}?next={% url 'personal_finance' %}" class="btn btn-secondary btn-lg" style="background-color: #008080; border-color: #008080;">
+                Войдите для просмотра
+            </a>
+        {% endif %}
+    </div>
+</div>
+
+<style>
+
+    .features-list {
+
+        border-radius: 10px;
+        padding: 25px;
+
+    }
+
+    .feature-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 50px;
+        padding-bottom: 50px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .feature-item:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+
+    .feature-icon {
+        font-size: 1.5rem;
+        color: cyan;
+        margin-right: 15px;
+        min-width: 30px;
+        text-align: center;
+    }
+
+    .feature-item span {
+        font-size: 1.1rem;
+        color: #fff;
+    }
+
+    h1 {
+        color: #008080;
+        padding-top: 15px;
+    }
+</style>
+{% endblock %}

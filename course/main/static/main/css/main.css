@@ -1,0 +1,243 @@
+body {
+    background: #2c2c2c;
+}
+
+aside {
+    float:left;
+    background: #181818;
+    width: 30%;
+    padding: 3.1%;
+    height: 200vh;
+    color: #66CDAA;
+    border-right: 10px solid #4d4d4d;
+
+}
+
+aside img {
+    width: 60px;
+    float: left;
+}
+
+aside .logo {
+    font-size: 31px;
+    margin-left: 4px;
+    font-weight: bold;
+    position: relative;
+    top: -1px;
+
+}
+
+aside h3{
+    margin-top: 40px;
+    font-size: 27px;
+}
+
+aside ul {list-style: none}
+aside ul li {
+    color: #008080;
+    display: block;
+    margin-top: 20px;
+    font-size: 20px;
+    transition: transform .6s ease;
+}
+
+aside ul li:hover, aside ul a:hover{
+    color: #00FFFF;
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+main .features {
+    float: left;
+    visibility: visible;
+    margin-top: 20px;
+    color: #008080;
+    text-align: center;
+    width: 70%;
+}
+main .descr{
+    color:#fff;
+    margin-top: 200px;
+
+}
+main .button_inf{
+    text-decoration: none;
+    transform: scale(1.05);
+    transition: transform .6s ease;
+    align:center;
+}
+
+main .features h1 {font=size: 60px;}
+main .features p { max-width: 400px; margin: 40px auto}
+
+.alert-warning{
+    float:center;
+    clear: both;
+    width:600px;
+    margin: 20px 21%;
+    text-align: center;
+}
+
+
+
+
+/* Стили для карточек функций */
+.feature-card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-inactive {
+    opacity: 0.8;
+    background-color: #6D8764;
+}
+
+.card-header {
+    border-radius: 10px 10px 0 0 !important;
+}
+
+/* Анимация для кнопок */
+.btn-outline-primary {
+    transition: all 0.3s;
+}
+
+.btn-outline-primary:hover {
+    background-color: #76608A;
+    color: #6D8764;
+}
+
+
+@media (max-width: 700px) {
+    .feature-card {
+        margin-bottom: 5px;
+    }
+}
+.welcome-message {
+    display: inline-block;  /* Чтобы margin работал правильно */
+    margin-right: 10px;    /* Отступ от кнопки выхода */
+    padding: 5px 5px;     /* Внутренние отступы */
+    font-size: 16px;       /* Размер текста */
+    font-weight: 500;      /* Жирность текста */
+    color: #2c3e50;        /* Цвет текста */
+    margin-top: 0px;
+    border-radius: 4px;    /* Закругленные углы */
+
+}
+.auth-buttons {
+    display: inline-flex;  /* Размещаем кнопки в одной строке */
+    align-items: center;   /* Выравниваем по вертикали */
+    gap: 10px;             /* Расстояние между кнопками */
+}
+
+/* Основные стили для карточек */
+.financial-tips {
+    padding: 2rem 0;
+}
+
+.tip-card {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.tip-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+.tip-card .card-body {
+    padding: 1.5rem;
+}
+
+.tip-card .card-title {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+main .card-text {
+    color: #34495e;
+    line-height: 1.6;
+}
+
+.tip-card .card-footer {
+    background: rgba(241, 243, 246, 0.5);
+    border-top: none;
+}
+
+/* Градиентные границы для разных карточек */
+.tip-card:nth-child(1) {
+    border-top: 4px solid #3498db;
+}
+
+.tip-card:nth-child(2) {
+    border-top: 4px solid #2ecc71;
+}
+
+.tip-card:nth-child(3) {
+    border-top: 4px solid #e74c3c;
+}
+
+.tip-card:nth-child(4) {
+    border-top: 4px solid #f39c12;
+}
+
+.tip-card:nth-child(5) {
+    border-top: 4px solid #9b59b6;
+}
+
+
+
+
+.features-list {
+
+    border-radius: 10px;
+    padding: 70px;
+    max-width: 500px;
+    margin: 70px auto;
+
+
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 60px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid #eee;
+}
+
+.feature-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.feature-icon {
+    font-size: 1.5rem;
+    color: cyan;
+    margin-right: 15px;
+    min-width: 30px;
+    text-align: center;
+}
+
+.feature-item span {
+    font-size: 1.1rem;
+    color: #008080;
+}
+
+.page-title {
+        color: #008080;
+        font-size: 2rem;
+        margin: 0;
+    }

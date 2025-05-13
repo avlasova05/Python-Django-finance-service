@@ -1,0 +1,21 @@
+{% extends 'main/layout.html' %} #наследование из layouta
+
+{% block title %}Форма по добавлению пользователя{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Форма по добавлению пользователя</h1>
+        <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+
+                <button class="btn btn-success" type="submit">Добавить пользователя</button>
+
+        </form>
+
+
+
+    </div>
+
+{% endblock %}

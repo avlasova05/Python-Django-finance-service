@@ -1,0 +1,50 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Доступные функции{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Доступные функции</h1>
+        {% filter upper %}
+        <p>Подробная информация о каждой из доступных функций сервиса</p>
+        {% endfilter %}
+
+        {% if features %}
+            {% for feature in features %}
+                <div class="alert alert-info">
+                    <h3>{{ feature.name }}</h3>
+                    <p>{{ feature.description }}</p>
+                    <p>
+                        <strong>Статус:</strong>
+                        {% if feature.is_active %}
+                            <span class="text-success">Активна</span>
+                        {% else %}
+                            <span class="text-danger">Неактивна</span>
+                        {% endif %}
+                    </p>
+                    <small class="text-muted">Создано: {{ feature.created_at|date:"d.m.Y H:i" }}</small>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="alert alert-warning">
+                Нет доступных функций
+            </div>
+        {% endif %}
+
+        <a href="{% url 'create_feature' %}" class="btn btn-success">
+            Добавить новую функцию
+        </a>
+
+        {# Пример вывода дополнительных данных #}
+        {% if values %}
+            <div class="mt-4">
+                <h4>Дополнительная информация:</h4>
+                {% for value in values %}
+                    {% if value == 'hello' %}
+                        <p>{{ value|upper }}</p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

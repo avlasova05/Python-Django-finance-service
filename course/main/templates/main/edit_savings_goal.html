@@ -1,0 +1,16 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Редактирование цели{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Редактирование цели накоплений</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+        <a href="{% url 'personal_finance' %}" class="btn btn-secondary">Отмена</a>
+    </form>
+</div>
+{% endblock %}
